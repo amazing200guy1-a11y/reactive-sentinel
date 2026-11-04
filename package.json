@@ -1,0 +1,11 @@
+{
+  "name": "reactive-sentinel",
+  "version": "1.0.0",
+  "description": "Autonomous Zero-Trust Cross-Chain Circuit Breaker & Liquidity Defense Engine on Reactive Network",
+  "main": "src/reactive_simulator.js",
+  "scripts": {
+    "test": "node test/reactive_sentinel.test.js"
+  },
+  "author": "Usman Bamidele",
+  "license": "MIT"
+}
