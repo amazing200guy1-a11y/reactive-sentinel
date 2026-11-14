@@ -552,23 +552,23 @@
 
           <div class="sim-grid">
             <button class="sim-btn danger" onclick="simulateThreat('flashloan')">
-              🚨 Flash-Loan Spike (650 ETH)
+               Flash-Loan Spike (650 ETH)
               <span>Excessive borrow drain anomaly</span>
             </button>
             <button class="sim-btn danger" onclick="simulateThreat('sandwich')">
-              🥪 Toxic Slippage (14.2%)
+               Toxic Slippage (14.2%)
               <span>MEV sandwich manipulation</span>
             </button>
             <button class="sim-btn danger" onclick="simulateThreat('exploit')">
-              💀 Re-entrancy Signature
+               Re-entrancy Signature
               <span>Exploit topic (0xdeadbeef)</span>
             </button>
             <button class="sim-btn" onclick="simulateThreat('normal')">
-              ✅ Normal Swap (8.5 ETH)
+              [PASS] Normal Swap (8.5 ETH)
               <span>Benign DEX transaction</span>
             </button>
             <button class="sim-btn reset-btn" onclick="resetCircuitBreaker()">
-              🔄 Reset Circuit Breaker to Armed
+               Reset Circuit Breaker to Armed
             </button>
           </div>
 
@@ -715,7 +715,7 @@ contract ReactiveSentinel is IReactive {
         <div class="code-box" style="color:var(--emerald);">
 <pre>
 ================================================================
-⚡ REACTIVESENTINEL — AUTONOMOUS CROSS-CHAIN CIRCUIT BREAKER TEST
+[ACTIVE] REACTIVESENTINEL — AUTONOMOUS CROSS-CHAIN CIRCUIT BREAKER TEST
    Reactive Network Omni Buildathon Evaluation Suite
 ================================================================
 
@@ -772,7 +772,7 @@ SUMMARY: 10/10 Tests Passed (100%)
             <div class="feed-desc">${e.desc}</div>
           </div>
           <div>
-            ${e.status === 'THREAT' ? '<span class="badge badge-red">🚨 CALLBACK DISPATCHED</span>' : '<span class="badge badge-green">✅ LOG CLEARED</span>'}
+            ${e.status === 'THREAT' ? '<span class="badge badge-red"> CALLBACK DISPATCHED</span>' : '<span class="badge badge-green">[PASS] LOG CLEARED</span>'}
           </div>
         </div>
       `).join('');
@@ -786,13 +786,13 @@ SUMMARY: 10/10 Tests Passed (100%)
 
       if (type === 'flashloan') {
         threatsCount++;
-        triggerBreaker("Flash-Loan Drain (650 ETH)", "Base", "🚨 Flash-loan spike > 100 ETH threshold. Callback dispatched to DestinationVault.");
+        triggerBreaker("Flash-Loan Drain (650 ETH)", "Base", " Flash-loan spike > 100 ETH threshold. Callback dispatched to DestinationVault.");
       } else if (type === 'sandwich') {
         threatsCount++;
-        triggerBreaker("Sandwich Attack (14.2% Slippage)", "Arbitrum", "🚨 Toxic slippage > 5.00% max limit. Emergency pause triggered.");
+        triggerBreaker("Sandwich Attack (14.2% Slippage)", "Arbitrum", " Toxic slippage > 5.00% max limit. Emergency pause triggered.");
       } else if (type === 'exploit') {
         threatsCount++;
-        triggerBreaker("Re-Entrancy Signature (0xdeadbeef)", "Ethereum", "🚨 Blacklisted exploit topic signature intercepted.");
+        triggerBreaker("Re-Entrancy Signature (0xdeadbeef)", "Ethereum", " Blacklisted exploit topic signature intercepted.");
       } else if (type === 'normal') {
         events.unshift({
           title: "Benign Swap (8.5 ETH)",
@@ -810,7 +810,7 @@ SUMMARY: 10/10 Tests Passed (100%)
       isTripped = true;
       document.getElementById('statusDot').className = 'dot dot-red';
       document.getElementById('statusText').innerText = 'CIRCUIT BREAKER: TRIPPED (VAULT SECURED)';
-      document.getElementById('vaultStatus').innerHTML = '<span style="color:var(--crimson); font-weight:700;">🚨 EMERGENCY PAUSED (Assets Preserved)</span>';
+      document.getElementById('vaultStatus').innerHTML = '<span style="color:var(--crimson); font-weight:700;"> EMERGENCY PAUSED (Assets Preserved)</span>';
 
       events.unshift({
         title: title,
